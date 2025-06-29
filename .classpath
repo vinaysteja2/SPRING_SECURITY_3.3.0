@@ -1,0 +1,13 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<classpath>
+	<classpathentry kind="con" path="org.eclipse.jdt.launching.JRE_CONTAINER"/>
+	<classpathentry kind="src" path="section1/springsecsection1/src/main/java"/>
+	<classpathentry kind="src" path="section1/springsecsection1/src/test/java"/>
+	<classpathentry kind="src" path="section2/springsecsection2/src/main/java"/>
+	<classpathentry kind="src" path="section2/springsecsection2/src/test/java"/>
+	<classpathentry kind="src" path="section3/springsecsection3/src/main/java"/>
+	<classpathentry kind="src" path="section3/springsecsection3/src/test/java"/>
+	<classpathentry kind="src" path="section4/springsecsection4/src/main/java"/>
+	<classpathentry kind="src" path="section4/springsecsection4/src/test/java"/>
+	<classpathentry kind="output" path="section1/springsecsection1/target/classes"/>
+</classpath>

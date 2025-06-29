@@ -2,6 +2,7 @@ package com.travelbank.config;
 
 import static org.springframework.security.config.Customizer.withDefaults;
 
+import javax.sql.DataSource;
 
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
@@ -13,6 +14,7 @@ import org.springframework.security.core.userdetails.UserDetailsService;
 import org.springframework.security.crypto.factory.PasswordEncoderFactories;
 import org.springframework.security.crypto.password.PasswordEncoder;
 import org.springframework.security.provisioning.InMemoryUserDetailsManager;
+import org.springframework.security.provisioning.JdbcUserDetailsManager;
 import org.springframework.security.web.SecurityFilterChain;
 import org.springframework.security.web.authentication.password.HaveIBeenPwnedRestApiPasswordChecker;
 
@@ -23,9 +25,10 @@ public class ProjectSecurityConfig {
     SecurityFilterChain defaultSecurityFilterChain(HttpSecurity http) throws Exception {
         /*http.authorizeHttpRequests((requests) -> requests.anyRequest().permitAll());*/
         /*http.authorizeHttpRequests((requests) -> requests.anyRequest().denyAll());*/
-        http.authorizeHttpRequests((requests) -> requests
+        http.csrf(csrfConfig -> csrfConfig.disable())
+        .authorizeHttpRequests((requests) -> requests
                 .requestMatchers("/myAccount", "/myBalance", "/myLoans", "/myCards").authenticated()
-                .requestMatchers("/notices", "/contact", "/error").permitAll());
+                .requestMatchers("/notices", "/contact", "/error","/register").permitAll());
 //        http.formLogin(flc->flc.disable());
 //        http.httpBasic(hbc->hbc.disable());
         http.formLogin(withDefaults());
@@ -33,12 +36,20 @@ public class ProjectSecurityConfig {
         return http.build();
     }
     
-    @Bean
-    public UserDetailsService userDetailsService() {
-        UserDetails user = User.withUsername("user").password("{noop}travelbank@54321").authorities("read").build();
-        UserDetails admin = User.withUsername("admin").password("{bcrypt}$2a$12$9gEsKxWChX2Kv66yy5zVo.5vmw7ks/IuLwNei3mx1oc1Y3AHSRCQ.").authorities("admin").build();
-return new InMemoryUserDetailsManager(user, admin);
-}
+//    @Bean
+//    public UserDetailsService userDetailsService() {
+//        UserDetails user = User.withUsername("user").password("{noop}travelbank@54321").authorities("read").build();
+//        UserDetails admin = User.withUsername("admin").password("{bcrypt}$2a$12$9gEsKxWChX2Kv66yy5zVo.5vmw7ks/IuLwNei3mx1oc1Y3AHSRCQ.").authorities("admin").build();
+//return new InMemoryUserDetailsManager(user, admin);
+//}
+    
+    
+//    @Bean
+//    public UserDetailsService userDetailsService(DataSource dataSource) {
+//        return new JdbcUserDetailsManager(dataSource);
+//    }
+
+    
     
     @Bean
     public PasswordEncoder passwordEncoder() {
