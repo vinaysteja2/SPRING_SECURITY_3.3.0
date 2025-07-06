@@ -6,17 +6,24 @@ target/
 *.war
 *.class
 
- 🧱 Angular / Node.js
-# ----------------------------------
-# Build outputs
-/dist/
-/out-tsc/
-/tmp/
-/.angular/cache
-/bazel-out
+# 🧱 Angular / Node.js
+# Build outputs and dependencies
+**/node_modules/
+**/dist/
+**/out-tsc/
+**/.angular/cache/
+**/tmp/
+**/coverage/
 
-# Node modules
-/node_modules/
+# Logs
 npm-debug.log*
 yarn-debug.log*
 yarn-error.log*
+
+# IDE/editor configs
+.vscode/
+.idea/
+
+# OS files
+.DS_Store
+Thumbs.db
