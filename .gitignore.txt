@@ -1,8 +1,22 @@
-# Ignore build outputs 
+# ----------------------------------
+# 🌱 Java / Spring Boot
+# ----------------------------------
 target/
 *.jar
 *.war
 *.class
 
-# Jib cache
-**/jib-cache/
+ 🧱 Angular / Node.js
+# ----------------------------------
+# Build outputs
+/dist/
+/out-tsc/
+/tmp/
+/.angular/cache
+/bazel-out
+
+# Node modules
+/node_modules/
+npm-debug.log*
+yarn-debug.log*
+yarn-error.log*
